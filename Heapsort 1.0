@@ -1,0 +1,50 @@
+ public void heapSort(){
+            insertar();
+            eliminar();
+        }
+        public void insertar(){
+            int k;
+            int aux;
+            boolean band;
+             for (int i = 0; i < listas.length; i++) {
+                k=i; 
+                band=true;
+                 while (k>1&&band==true) {                     
+                     band=false;
+                     if (listas[k]>listas[k/2]) {
+                         aux=listas[k/2];
+                         listas[k/2]=listas[k];
+                         listas[k]=aux;
+                         k=k/2;
+                         band=true;
+                     }
+                 }
+            }
+        }
+        public void eliminar(){
+            for (int i = listas.length; i < 2; i--) {
+                int aux=listas[i];
+                listas[i]=listas[1];
+                int izq=2;
+                int der=3;
+                int k=1;
+                boolean bool=true;
+                while (izq>i&&bool==true) {                    
+                    int mayor=listas[izq];
+                    int ap=izq;
+                    if (mayor<listas[der]&&der!=1) {
+                        mayor=listas[der];
+                        ap=der;
+                    }
+                    if (aux<mayor) {
+                        listas[k]=listas[ap];
+                        k=ap;
+                    }else{
+                        bool=false;
+                    }
+                    izq=k*2;
+                    der=izq+1;
+                }
+                listas[k]=aux;
+            }
+        }
